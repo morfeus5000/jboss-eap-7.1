@@ -1,5 +1,6 @@
 FROM openjdk:8u151-jdk-alpine
 MAINTAINER Pablo Almeida Galvez neocrow27@gmail.com
+# Basado en dockerfile daggerok/jboss:eap-7.1
 
 ARG VERSION_ARG="7.1"
 ARG JBOSS_ADMIN_PASSWORD_ARG="Admin.123"
