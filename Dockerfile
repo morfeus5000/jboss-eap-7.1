@@ -18,7 +18,7 @@ ENV JBOSS_FILE="${JBOSS_USER}.0.zip" \
 ENV JBOSS_URL="https://github.com/daggerok/jboss/releases/download/eap/${JBOSS_FILE}" \
     JBOSS_HOME="${JBOSS_USER_HOME}/${JBOSS_USER}"
 
-VOLUME "/home/${JBOSS_USER}/standalone/deployments/"
+VOLUME "${JBOSS_USER_HOME}/standalone/deployments/"
 VOLUME "/opt/jboss-eap-6.4/simulador/log/"
 
 RUN apk --no-cache --update add busybox-suid bash wget ca-certificates unzip sudo openssh-client shadow \
@@ -47,6 +47,7 @@ ARG JAVA_OPTS_ARGS="\
  -XshowSettings:vm "
 
 ENV JAVA_OPTS="${JAVA_OPTS} ${JAVA_OPTS_ARGS}"
+
 
 CMD /bin/bash
 EXPOSE 8080 9990 8443
