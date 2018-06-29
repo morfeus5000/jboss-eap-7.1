@@ -36,7 +36,8 @@ RUN apk --no-cache --update add busybox-suid bash wget ca-certificates unzip sud
 USER ${JBOSS_USER}
 WORKDIR ${JBOSS_USER_HOME}
 
-VOLUME /home/jboss-eap-7.1/standalone/deployments/
+VOLUME /home/jboss-eap-7.1/jboss-eap-7.1/standalone/deployments/
+VOLUME /opt/jboss-eap-6.4/simulador/log/
 
 ARG JAVA_OPTS_ARGS="\
  -Djava.net.preferIPv4Stack=true \
