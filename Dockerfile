@@ -18,6 +18,9 @@ ENV JBOSS_FILE="${JBOSS_USER}.0.zip" \
 ENV JBOSS_URL="https://github.com/daggerok/jboss/releases/download/eap/${JBOSS_FILE}" \
     JBOSS_HOME="${JBOSS_USER_HOME}/${JBOSS_USER}"
 
+VOLUME "/home/${JBOSS_USER}/standalone/deployments/"
+VOLUME "/opt/jboss-eap-6.4/simulador/log/"
+
 RUN apk --no-cache --update add busybox-suid bash wget ca-certificates unzip sudo openssh-client shadow \
  && addgroup ${JBOSS_USER}-group \
  && echo "${JBOSS_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
@@ -36,8 +39,6 @@ RUN apk --no-cache --update add busybox-suid bash wget ca-certificates unzip sud
 USER ${JBOSS_USER}
 WORKDIR ${JBOSS_USER_HOME}
 
-VOLUME /home/jboss-eap-7.1/jboss-eap-7.1/standalone/deployments/
-VOLUME /opt/jboss-eap-6.4/simulador/log/
 
 ARG JAVA_OPTS_ARGS="\
  -Djava.net.preferIPv4Stack=true \
